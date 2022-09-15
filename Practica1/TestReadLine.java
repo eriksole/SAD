@@ -1,25 +1,41 @@
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 
 import static java.awt.event.KeyEvent.*;
 
-public class TestReadLine {
+class TestReadLine {
+  public static void main(String[] args) {
+    BufferedReader in = new EditableBufferedReader(
+      new InputStreamReader(System.in));
+    String str = null;
+    try {
+      str = in.readLine();
+    } catch (IOException e) { e.printStackTrace(); }
+    System.out.println("\nline is: " + str);
+  }
+}
 
-    private static String ttyConfig;
-    private static Line line = new Line();
+public class EditableBufferedReader extends BufferedReader {
+
+    private  String ttyConfig;
+    private  Line line = new Line();
+    private Reader in;
 
     //Constants de les possibles comandes
-    private static int LEFT_KEY = 68, RIGHT_KEY = 67, HOME = 72, END = 70;
+    private int LEFT_KEY = 68, RIGHT_KEY = 67, HOME = 72, END = 70;
 
-    public static void main(String[] args) {
+    public EditableBufferedReader(Reader reader) {
+        super(reader);
+        in = reader;
+    }
+
+    public String readLine() {
 
         try {
             setTerminalToCBreak();
             int cursor = 1;
             System.out.print("\033[2K\033[2;1H");
             while (true) {
-                int key = System.in.read();
+                int key = in.read();
                 if(key == '\n') break;
                 if(key == 91 || key == 27) continue;
                 if(key == VK_DELETE) { //Tecla borrar
@@ -42,7 +58,8 @@ public class TestReadLine {
                 refreshScreen(cursor);
             }
             System.out.print("\033[1E\033[2K\033[3;1H");
-            System.out.println("Inputed line is: " + line.str);
+
+            return line.str;
         }
         catch (IOException e) {
             System.err.println("IOException");
@@ -58,9 +75,10 @@ public class TestReadLine {
                 System.err.println("Exception restoring tty config");
             }
         }
+        return "";
     }
 
-    private static void refreshScreen(int cursor) {
+    private void refreshScreen(int cursor) {
         //Borrem la linea, ens situem a la primera posicio
         System.out.print("\033[2K\033[2;1H");
         //Escrivim la linea
@@ -69,7 +87,7 @@ public class TestReadLine {
         System.out.print("\033[2;"+ cursor + "H");
     }
 
-    private static void setTerminalToCBreak() throws IOException, InterruptedException {
+    private void setTerminalToCBreak() throws IOException, InterruptedException {
 
         ttyConfig = stty("-g");
 
@@ -80,7 +98,7 @@ public class TestReadLine {
     }
 
     //Executem les comandes a la terminal
-    private static String stty(final String args)
+    private String stty(final String args)
             throws IOException, InterruptedException {
         String cmd = "stty " + args + " < /dev/tty";
 
@@ -91,7 +109,7 @@ public class TestReadLine {
         });
     }
 
-    private static String exec(final String[] cmd)
+    private String exec(final String[] cmd)
             throws IOException, InterruptedException {
         ByteArrayOutputStream bout = new ByteArrayOutputStream();
 
