@@ -14,11 +14,12 @@ class TestReadLine {
   }
 }
 
-public class EditableBufferedReader extends BufferedReader {
+class EditableBufferedReader extends BufferedReader {
 
     private  String ttyConfig;
     private  Line line = new Line();
     private Reader in;
+    private Console view = new Console();
 
     //Constants de les possibles comandes
     private int LEFT_KEY = 68, RIGHT_KEY = 67, HOME = 72, END = 70;
@@ -55,7 +56,7 @@ public class EditableBufferedReader extends BufferedReader {
                     cursor++;
                 }
                 //Refresquem la pantalla
-                refreshScreen(cursor);
+                view.updateView(line, cursor);
             }
             System.out.print("\033[1E\033[2K\033[3;1H");
 
@@ -76,15 +77,6 @@ public class EditableBufferedReader extends BufferedReader {
             }
         }
         return "";
-    }
-
-    private void refreshScreen(int cursor) {
-        //Borrem la linea, ens situem a la primera posicio
-        System.out.print("\033[2K\033[2;1H");
-        //Escrivim la linea
-        System.out.print(line.str);
-        //Ens situem a la posició de cursor anterior
-        System.out.print("\033[2;"+ cursor + "H");
     }
 
     private void setTerminalToCBreak() throws IOException, InterruptedException {
@@ -131,6 +123,19 @@ public class EditableBufferedReader extends BufferedReader {
 
         String result = new String(bout.toByteArray());
         return result;
+    }
+
+}
+
+class Console {
+
+    public void updateView(Line line, int cursor) {
+        //Borrem la linea, ens situem a la primera posicio
+        System.out.print("\033[2K\033[2;1H");
+        //Escrivim la linea
+        System.out.print(line.str);
+        //Ens situem a la posició de cursor anterior
+        System.out.print("\033[2;"+ cursor + "H");
     }
 
 }
