@@ -55,13 +55,13 @@ class EditableBufferedReader extends BufferedReader {
                 else if(key == UP_KEY) {//Fletja adalt
                     if(cursor_y > 1) {
                         cursor_y--;
-                        cursor_x = Math.min(cursor_x, text.lines[cursor_y-1].str.length());
+                        cursor_x = Math.min(cursor_x, text.lines[cursor_y-1].str.length()+1);
                     }
                 }
                 else if(key == DOWN_KEY) {//Fletja adalt
                     if(cursor_y < text.lines.length) {
                         cursor_y++;
-                        cursor_x = Math.min(cursor_x, text.lines[cursor_y-1].str.length());
+                        cursor_x = Math.min(cursor_x, text.lines[cursor_y-1].str.length()+1);
                     }
                 }
                 else if(key == HOME) cursor_x = 1; //Tecla H
