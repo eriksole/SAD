@@ -1,0 +1,26 @@
+{
+  "query": "INSERT INTO activities (activity_type, date, username) VALUES ($1, $2, $3)",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Left": [
+        {
+          "Custom": {
+            "name": "valid_activity",
+            "kind": {
+              "Enum": [
+                "run",
+                "swim",
+                "bike"
+              ]
+            }
+          }
+        },
+        "Text",
+        "Text"
+      ]
+    },
+    "nullable": []
+  },
+  "hash": "71d0976ff45fa1b057692b54d425ba5cf556dd8cf7659a0b914d013d34f469f9"
+}

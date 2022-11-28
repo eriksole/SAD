@@ -1,0 +1,42 @@
+{
+  "query": "SELECT * FROM activities AS \"activity_type!: ActivityType\"",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "activity_type",
+        "type_info": {
+          "Custom": {
+            "name": "valid_activity",
+            "kind": {
+              "Enum": [
+                "run",
+                "swim",
+                "bike"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "ordinal": 1,
+        "name": "date",
+        "type_info": "Text"
+      },
+      {
+        "ordinal": 2,
+        "name": "username",
+        "type_info": "Text"
+      }
+    ],
+    "parameters": {
+      "Left": []
+    },
+    "nullable": [
+      false,
+      false,
+      false
+    ]
+  },
+  "hash": "361404550f4101513b8b838bb1433bb32dba5b1f31a5c973fb08804e6499f2b0"
+}
