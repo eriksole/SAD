@@ -1,0 +1,22 @@
+{
+  "query": "SELECT EXISTS (SELECT * FROM users WHERE username=$1 AND password=$2)",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "exists",
+        "type_info": "Bool"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Text",
+        "Text"
+      ]
+    },
+    "nullable": [
+      null
+    ]
+  },
+  "hash": "d8e8df42fcb47404b2dd6dff4345ec25a656b0bab94a1c2b7b7f06dec5cb76cf"
+}

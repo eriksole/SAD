@@ -1,0 +1,11 @@
+{
+  "query": "DELETE FROM users WHERE username = 'test_username2'",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Left": []
+    },
+    "nullable": []
+  },
+  "hash": "cbb85e433af612fc949d5bad35c72ceb386acec699ece11d89fbf4e72dd06618"
+}

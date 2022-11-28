@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Auth Login Rust</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="navbar">
+        <a class="button-23" href="#home">Home</a>
+        <a class="button-23" href="#news">News</a>
+        <a class="button-23" href="#contact">Contact</a>
+        <a class="button-23" href="../index.html" style="margin-left: auto; float:right; position: relative; right: 30px;">Log out</a>
+    </div>
+
+    <div class="info_box" style= "width: 25%; height: 70%; top: 100px; left: 15px;">
+        <h1 style="text-align: center;">FILTER ACTIVITIES</h1>
+    </div>
+    <div class="info_box" style= "width: 20%; height: 350px; top: 100px; right: 15px; ">
+        <h1 style="text-align: center;">PLAN ACTIVITY</h1>
+        <center>
+        <form action="/create_activity" method="POST">
+            <h3>Activity type</h3>
+            <select name="activity_type" class="button-23">
+                <option value="run">Run</option>
+                <option value="bike">Bike</option>
+                <option value="swim">Swim</option>
+            </select>
+            <br>
+            <h3>Date</h3>
+            <input type="datetime-local"
+                   name="date" value="2022-08-9T19:30"
+                   min="2022-08-9T19:30" max="2023-08-9T19:30"
+                   class="button-23">
+            <input id="id_key" type="hidden" name="username"/>
+            <br><br><br>
+            <button type="submit" class="button-23">Create Activity</button>
+        </form>
+        </center>
+    </div>
+</body>
+<script src="/main_page.js" charset="utf-8" defer></script>
+</html>

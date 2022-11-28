@@ -1,0 +1,21 @@
+{
+  "query": "SELECT EXISTS (SELECT * FROM users WHERE username=$1)",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "exists",
+        "type_info": "Bool"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Text"
+      ]
+    },
+    "nullable": [
+      null
+    ]
+  },
+  "hash": "f1c19f1230fd4aa979978314e8393e51059f7da4df199d369ca8237127f55137"
+}

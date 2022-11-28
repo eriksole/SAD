@@ -1,0 +1,14 @@
+{
+  "query": "UPDATE activities SET joined = array_append(joined, $1::text) WHERE id = $2",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Left": [
+        "Text",
+        "Text"
+      ]
+    },
+    "nullable": []
+  },
+  "hash": "019e26701372613be4f82403d512913ca62a32e17d8a084bdf1af3f1119d814e"
+}
