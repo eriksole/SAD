@@ -6,15 +6,15 @@ import util.*;
 public class Clientxat {
     public static String username;
     public static void main(String[] args){        
-        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 
-        System.out.print("Write your username: ");
+        System.out.print("Escriu el teu nom: ");
 
         try{
-            username = in.readLine();
-            System.out.println("Welcome to the chat " + username);
+            username = input.readLine();
+            System.out.println("Benvingut " + username);
         }catch(Exception e){
-            System.out.println("Error reading your username");
+            System.out.println("Error llegint el teu usuari");
         }
 
         MySocket sc = new MySocket(username);        
@@ -22,11 +22,11 @@ public class Clientxat {
         Thread socketThread = new Thread(() -> {
             try{
                 String line;
-                while ((line = in.readLine()) != null){
+                while ((line = input.readLine()) != null){
                     sc.write(line);                                        
                 }
             }catch (Exception e){
-                System.out.println("Error reading your message");
+                System.out.println("Error llegint el teu missatge");
             }
         });
         socketThread.start();
