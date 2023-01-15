@@ -1,0 +1,15 @@
+----------------------------------------------------------------------------
+INFO CÓDIGO
+----------------------------------------------------------------------------
+1.- Programeu una solució genèrica per programar servidors dirigits per events basats en selector NIO.
+2.- Algunos nombres de variables creo que deberian ser mas intuitivos
+3.- The Reactor design pattern handles service requests that are delivered concurrently to an application by one or more clients
+4.- Ahora la tabla de conexiones guarda el nombre y el socketChannel
+
+----------------------------------------------------------------------------
+STILL CÓDIGO
+----------------------------------------------------------------------------
+1.- colores en el chat
+2.- botones de emojis simétricos
+3.- recibir los emotivonos bien
+4.- scroll en el visor de mensajes
